@@ -2,8 +2,6 @@
   <div id="app">
 
 
-
-
 <cld-image publicId="lunaPainting2_bhc0vs.jpg" >
   <cld-transformation width="633" crop="scale" flags="force_strip"/>
 </cld-image>
