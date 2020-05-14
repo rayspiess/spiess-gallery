@@ -1,4 +1,4 @@
-# sit-with-abe
+# spiess-gallery
 
 ## Project setup
 ```
