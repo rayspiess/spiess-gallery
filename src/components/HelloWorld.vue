@@ -117,7 +117,7 @@ export default {
 
           item.index = '1';
           item.title = 'title';
-          item.category = 'cat';
+          item.category = 'category';
           item.filename = 'filename';
           item.thumbnail = '';
 /*
