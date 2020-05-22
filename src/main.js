@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import Element from 'element-ui'
+//import './element-variables.scss'
+import 'element-ui/lib/theme-chalk/index.css';
+// responsive classes
+import 'element-ui/lib/theme-chalk/display.css';
+
+
 import Cloudinary from "cloudinary-vue";
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
+
+Vue.use(Element)
 
 import ProgressBar from 'vuejs-progress-bar'
 Vue.use(ProgressBar)
