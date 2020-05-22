@@ -1,5 +1,5 @@
 {
-  "name": "sit-with-abe",
+  "name": "spiess-gallery",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "cloudinary-vue": "^1.0.0",
+    "cloudinary-core": "^2.8.2",
+    "cloudinary-vue": "^1.0.1",
     "core-js": "^3.6.4",
+    "current-script-polyfill": "^1.0.0",
     "vue": "^2.6.11",
     "vuejs-progress-bar": "^1.2.2"
   },
