@@ -2,9 +2,10 @@
   <div class="hello">
 
 <cld-image publicId="drawings/2018-12-03_16-53-00-0600_urkrgd.jpg" >
-  <cld-transformation flags="force_strip" width="592" crop="scale" />
+  <cld-transformation flags="force_strip" width="520" crop="scale" />
 </cld-image>
 
+<div class="image-masonry">
 <masonry
   id = "masonryimages" 
   :cols="{default: 4, 1200: 3, 1000: 2, 600: 1}"
@@ -16,9 +17,10 @@
   </div>
 
 </masonry>
+</div>
     <h1>{{ msg }}</h1>
     <p>
-      A test sandbox for a possible social distancing postcard maker.<br>
+      A test sandbox for a Vue.js, Cloudinary, Netlify gallery<br>
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
@@ -137,7 +139,17 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
+
+.thumbnail img{
+  width:100% !important;
+}
+
+.image-masonry {
+    padding-top: 20px;
+    background-color: #eaeaea;
+}
+
 h3 {
   margin: 40px 0 0;
 }

@@ -7,7 +7,10 @@
     <el-button 
         @click.native = "open" 
         slot="reference">
-           <img :src="item.url" :alt="item.category" class="thumbnail"><br/>
+          <!-- <img :src="item.url" :alt="item.category" class="thumbnail"><br/> -->
+          <cld-image :publicId="item.public_id" >
+          <cld-transformation width="485" crop="scale" />
+          </cld-image>
         <strong>
         <p>{{item.title}}</p>
         <p class="subhead">{{item.category}}</p>
@@ -31,7 +34,9 @@
    </viewer>
    -->
       <div v-viewer="options" class="images clearfix">
-        <img v-for="src in images" :src="src" :key="src">
+        <!--  <img v-for="src in images" :src="src" :key="src"> -->
+          <cld-image :publicId="item.public_id" >
+          </cld-image>
     </div>
 
     <span slot="footer" >
@@ -124,6 +129,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 
 .el-dialog--center .el-dialog__body {
     background-color: #Eae9E9;
