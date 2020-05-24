@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
       proxy: {
         '^/api': {
-          target: 'http://jsonplaceholder.typicode.com/',
+          target: 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image',
          // changeOrigin: true,
          // target: 'http://jsonplaceholder.typicode.com/',
          // secure: false,
