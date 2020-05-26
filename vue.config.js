@@ -11,16 +11,21 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: 'https://@api.cloudinary.com,
-         },
-        },
-        '/apix': {
-          target: 'https://@api.cloudinary.com,
+          target: 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com',
          // changeOrigin: true,
          // target: 'http://jsonplaceholder.typicode.com/',
          // secure: false,
           pathRewrite: {
            '^/api': '',
+         },
+        },
+                '/api2': {
+          target: 'https://api.cloudinary.com',
+         // changeOrigin: true,
+         // target: 'http://jsonplaceholder.typicode.com/',
+         // secure: false,
+          pathRewrite: {
+           '^/api2': '',
          },
         },
 

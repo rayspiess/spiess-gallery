@@ -82,8 +82,8 @@ export default {
 
     getImagesList: function() {
 
-      let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
-      this.formData = new FormData();
+   //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
+    //  this.formData = new FormData();
 
 var requestObj = {
   'method': 'GET',
@@ -95,22 +95,12 @@ var requestObj = {
     'api_key': '917975234378397',
     'api_secret': 'FoqQCqQzluD9tI7QZri0Dt_cTto',
     'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw==',
-    'Cookie': '_cld_session_key=c6f0542800c8a42631a6b5d8fc02cffb'
   }
 };
-
-
-      let requestObjX = {
-        url: cloudinaryUploadURL,
-        method: "GET",
-        data: this.formData,
-      };
-
       axios(requestObj)
         .then(response => {
           this.results = response.data;
           console.log(this.results);
-          console.log("public_id", this.results.public_id);
         })
         .catch(error => {
           this.errors.push(error);
