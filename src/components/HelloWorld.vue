@@ -51,7 +51,7 @@ export default {
   data () {
     return {
       info: null,
-      jsonData: '',
+      jsonData: [],
       item: {
         index: '1',
         title: 'title', 
@@ -72,6 +72,7 @@ export default {
 
     this.getImagesList();
 
+
     //this.jsonData = this.loadJson();
   },
   methods: { 
@@ -85,30 +86,32 @@ export default {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
     //  this.formData = new FormData();
 
-var requestObj = {
-  'method': 'GET',
-  'url': '/api',
-  'headers': {
+     var requestObj = {
+    'method': 'GET',
+    'url': '/api',
+    'headers': {
     'Accept': 'application/vnd.api+json',
     'api-version': '2012-02-12',
     'x-ms-version': '2017-07-29',
     'api_key': '917975234378397',
     'api_secret': 'FoqQCqQzluD9tI7QZri0Dt_cTto',
     'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
-  }
-};
-      axios(requestObj)
+     }
+     };
+
+     return axios(requestObj)
         .then(response => {
           this.results = response.data;
           console.log(this.results);
+          this.jsonData  = response.data.resources;
         })
         .catch(error => {
           console.log(error);
         })
         .finally(() => {
            console.log("finally");
-        });
 
+        });
     },
 
     getImagesListX: function() {
@@ -151,8 +154,8 @@ var requestObj = {
     imageList: function() {
         //let thisDoc = this;
 
-       // var image_array = this.loadJson();
-         var image_array = []
+        var image_array = this.jsonData;
+        // var image_array = []
         
         image_array.filter(function (item) {
 
