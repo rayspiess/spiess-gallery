@@ -88,13 +88,13 @@ export default {
 
      var requestObj = {
     'method': 'GET',
-    'url': '/api',
+    'url': '/api2',
     'headers': {
     'Accept': 'application/vnd.api+json',
     'api-version': '2012-02-12',
     'x-ms-version': '2017-07-29',
-    'api_key': '917975234378397',
-    'api_secret': 'FoqQCqQzluD9tI7QZri0Dt_cTto',
+   // 'api_key': '',
+   // 'api_secret': '',
     'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
      }
      };
