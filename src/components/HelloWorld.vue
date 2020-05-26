@@ -61,7 +61,8 @@ export default {
       },
       apiKey: '917975234378397',
       apiSecret: 'FoqQCqQzluD9tI7QZri0Dt_cTto',
-      cloudName: 'spiess-co'
+      cloudName: 'spiess-co',
+      formData: null
     }
   },
   mounted () {
@@ -80,6 +81,48 @@ export default {
     },
 
     getImagesList: function() {
+
+      let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
+      this.formData = new FormData();
+
+var requestObj = {
+  'method': 'GET',
+  'url': '/api',
+  'headers': {
+    'Accept': 'application/vnd.api+json',
+    'api-version': '2012-02-12',
+    'x-ms-version': '2017-07-29',
+    'api_key': '917975234378397',
+    'api_secret': 'FoqQCqQzluD9tI7QZri0Dt_cTto',
+    'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw==',
+    'Cookie': '_cld_session_key=c6f0542800c8a42631a6b5d8fc02cffb'
+  }
+};
+
+
+      let requestObjX = {
+        url: cloudinaryUploadURL,
+        method: "GET",
+        data: this.formData,
+      };
+
+      axios(requestObj)
+        .then(response => {
+          this.results = response.data;
+          console.log(this.results);
+          console.log("public_id", this.results.public_id);
+        })
+        .catch(error => {
+          this.errors.push(error);
+          console.log(this.error);
+        })
+        .finally(() => {
+           console.log("finally");
+        });
+
+    },
+
+    getImagesListX: function() {
 
       //https://<API_KEY>:<API_SECRET>@api.cloudinary.com/v1_1/<CLOUD_NAME>/resources/image
 

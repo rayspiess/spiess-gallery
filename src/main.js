@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/display.css';
 
 
 import Cloudinary from "cloudinary-vue";
+
+
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 
 Vue.use(Element)
@@ -18,7 +20,9 @@ Vue.use(ProgressBar)
 
 Vue.use(Cloudinary, {
   configuration: { 
-    cloudName: "spiess-co" 
+    cloudName: "spiess-co",
+    api_key: '917975234378397', 
+    api_secret: 'FoqQCqQzluD9tI7QZri0Dt_cTto'  
   }
   //             ^ cloudinary configuration options
 });
