@@ -94,7 +94,7 @@ var requestObj = {
     'x-ms-version': '2017-07-29',
     'api_key': '917975234378397',
     'api_secret': 'FoqQCqQzluD9tI7QZri0Dt_cTto',
-    'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw==',
+    'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
   }
 };
       axios(requestObj)
@@ -103,8 +103,7 @@ var requestObj = {
           console.log(this.results);
         })
         .catch(error => {
-          this.errors.push(error);
-          console.log(this.error);
+          console.log(error);
         })
         .finally(() => {
            console.log("finally");

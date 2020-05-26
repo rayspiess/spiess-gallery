@@ -11,25 +11,15 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com',
+          target: 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image',
          // changeOrigin: true,
          // target: 'http://jsonplaceholder.typicode.com/',
          // secure: false,
           pathRewrite: {
-           '^/api': '',
-         },
-        },
-                '/api2': {
-          target: 'https://api.cloudinary.com',
-         // changeOrigin: true,
-         // target: 'http://jsonplaceholder.typicode.com/',
-         // secure: false,
-          pathRewrite: {
-           '^/api2': '',
+           '/api': '',
          },
         },
 
+        },
       },
-    },
-    
   }
