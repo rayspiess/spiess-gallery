@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "start:lambda" : "netlify-lambda serve functions",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -14,6 +15,7 @@
     "core-js": "^3.6.4",
     "current-script-polyfill": "^1.0.0",
     "element-ui": "^2.13.2",
+    "netlify-lambda": "^1.6.3",
     "v-viewer": "^1.5.1",
     "vue": "^2.6.11",
     "vue-masonry-css": "^1.0.3",
