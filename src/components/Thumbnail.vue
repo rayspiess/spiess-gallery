@@ -1,8 +1,9 @@
 <template>
   <div class="thumbnail foo">
     
+
   <transition name="fade" mode="out-in" >
-    <div v-if="item">
+    <div v-if="item.public_id">
 
     <el-button 
         @click.native = "open" 
@@ -16,14 +17,12 @@
         <p class="subhead">{{item.category}}</p>
         </strong>
     </el-button>
-        </div>
-  </transition>
     
-<el-dialog
-  :visible.sync="centerDialogVisible"
-  top="5vh"
-  width="80%"
-  center>
+    <el-dialog
+      :visible.sync="centerDialogVisible"
+      top="5vh"
+      width="80%"
+      center>
   <div class="dialog-image">
 
     <!--  :title="item.title" -->
@@ -50,7 +49,10 @@
     -->
   </span>
   </div>
-</el-dialog>
+    </el-dialog>
+
+        </div>
+  </transition>
 
    </div>
 </template>

@@ -4,6 +4,7 @@ import App from './App.vue'
 import Element from 'element-ui'
 //import './element-variables.scss'
 import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/base.css';
 // responsive classes
 import 'element-ui/lib/theme-chalk/display.css';
 
