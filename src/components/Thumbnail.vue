@@ -1,7 +1,6 @@
 <template>
   <div class="thumbnail foo">
     
-
   <transition name="fade" mode="out-in" >
     <div v-if="item.public_id">
 
