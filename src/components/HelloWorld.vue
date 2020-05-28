@@ -80,9 +80,11 @@ export default {
     getImagesList: function() {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
+   let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+
      var requestObj = {
     'method': 'GET',
-    'url': '/api2/image?max_results=5',
+    'url': url, // '/api2/image?max_results=5',
     'headers': {
     'Accept': 'application/vnd.api+json',
     'api-version': '2012-02-12',
