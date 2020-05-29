@@ -1,6 +1,8 @@
 const axios = require('axios');
 exports.handler = (event, context, callback) => {
 
+  // number to fetch 
+
   const name = event.queryStringParameters.name || "World";
 
   const url = 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image';
@@ -9,6 +11,7 @@ exports.handler = (event, context, callback) => {
 
    axios.get(url,  {
     headers: {
+      'Access-Control-Allow-Origin': '*',
       'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
     }
 
