@@ -1,3 +1,7 @@
 [build]
 functions = "lambda"
 Command = "npm run prod"
+[[headers]]
+for = "/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
