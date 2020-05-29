@@ -1,6 +1,8 @@
 const axios = require('axios');
 exports.handler = (event, context, callback) => {
 
+  const name = event.queryStringParameters.name || "World";
+
   const url = 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image';
   //const url ='https://jsonplaceholder.typicode.com/todos/1';
   //const url ='/v1_1/spiess-co/resources/image';

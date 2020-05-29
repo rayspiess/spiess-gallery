@@ -1,16 +1,20 @@
 const axios = require('axios');
 exports.handler = (event, context, callback) => {
 
+  const url = 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image';
+
+
   const requestObj = {
     'method': 'GET',
     'url': 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image',
     'headers': {
-    'Accept': 'application/vnd.api+json',
-    'api-version': '2012-02-12',
-    'x-ms-version': '2017-07-29',
+      'Access-Control-Allow-Origin': '*',
+      'Accept': 'application/vnd.api+json',
+      'api-version': '2012-02-12',
+      'x-ms-version': '2017-07-29',
    // 'api_key': '',
    // 'api_secret': '',
-    'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
+      'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
      }
      };
 
