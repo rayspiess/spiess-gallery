@@ -10,7 +10,6 @@
 
 </div >
 </transition>
-  
 
 <div class="image-masonry">
 <masonry
@@ -61,6 +60,8 @@ export default {
       showMasonry:false,
       info: null,
       jsonData: [],
+      max_results: 10,
+      next_cursor: null,
       item: {
         index: '1',
         title: 'title', 
@@ -80,11 +81,18 @@ export default {
     getImagesList: function() {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-   let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+   let baseUrl =  '/api2/image';
+   let tags = '/tags/painting';
+   let maxResults = 'max_results=10';
+   let urlParams = '?'+maxResults;
 
-     var requestObj = {
+   let url =  baseUrl + tags;
+
+    // let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+
+    var  requestObj = {
     'method': 'GET',
-    'url': url, // '/api2/image?max_results=5',
+    'url': url, 
     'headers': {
     'Accept': 'application/vnd.api+json',
     'api-version': '2012-02-12',
