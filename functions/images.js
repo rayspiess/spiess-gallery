@@ -11,7 +11,6 @@ exports.handler = (event, context, callback) => {
 
    axios.get(url,  {
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Authorization': 'Basic OTE3OTc1MjM0Mzc4Mzk3OkZvcVFDcVF6bHVEOXRJN1FacmkwRHRfY1R0bw=='
     }
 
@@ -19,6 +18,11 @@ exports.handler = (event, context, callback) => {
     .then((res) => {
       callback(null, {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers':
+            'Origin, X-Requested-With, Content-Type, Accept',
+        },
         body: JSON.stringify(res.data),
       });
     })
