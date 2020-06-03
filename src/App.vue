@@ -1,21 +1,22 @@
 <template>
   <div id="app">
+    <Banner />
+    <Gallery msg="SpiessCo Sandbox"/>
 
-    <HelloWorld msg="SpiessCo Sandbox"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-//import snapPhoto from './components/snapPhoto.vue'
+import Gallery from './components/Gallery.vue'
+import Banner from './components/Banner.vue'
 //import CloudinaryUpload from "./components/CloudinaryUpload";
 //import UploadWidget from './components/UploadWidget.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld, 
-   // snapPhoto, 
+    Gallery, 
+    Banner, 
    //"cl-upload": CloudinaryUpload
   }
 }

@@ -13,7 +13,7 @@
           </cld-image>
         <strong>
         <p>{{item.title}}</p>
-        <p class="subhead">{{item.category}}</p>
+      <!--  <p class="subhead">{{item.category}}</p> -->
         </strong>
     </el-button>
     
@@ -39,7 +39,8 @@
 
     <span slot="footer" >
     <div class="dialog-footer-text">
-    <p><a :href="'/image/' + item.rootfilename">{{item.title}}</a><p>
+    <!-- <p><a :href="'/image/' + item.rootfilename">{{item.title}}</a><p> --> 
+    <p class = "title">{{item.title}}<p>
     <p>{{item.category}}</p>
     </div>
     <!--

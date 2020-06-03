@@ -1,15 +1,7 @@
 <template>
 
-  <div class="hello">
-<transition name="el-fade-in-linear">
- <div v-show="show" class="transition-show">
+  <div class="gallery">
 
-<cld-image publicId="drawings/2018-12-03_16-53-00-0600_urkrgd.jpg" >
-  <cld-transformation flags="force_strip" width="520" crop="scale" />
-</cld-image>
-
-</div >
-</transition>
 
 <div class="image-masonry">
 <masonry
@@ -22,7 +14,6 @@
   </div>
 </masonry>
 </div>
-
     <h1>{{ msg }}</h1>
     <p>
       A test sandbox for a Vue.js, Cloudinary, Netlify gallery<br>
@@ -31,7 +22,7 @@
     </p>
   </div>
 </template>
-
++
 <script>
 import Vue from 'vue'
 import axios from 'axios'
@@ -46,7 +37,7 @@ import 'element-ui/lib/theme-chalk/base.css';
 Vue.use(VueMasonry)
 
 export default {
-  name: 'HelloWorld',
+  name: 'Gallery',
     components: {
       thumbnail: Thumbnail,
    //   imagesizes: Imagesizes
@@ -82,11 +73,13 @@ export default {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
    let baseUrl =  '/api2/image';
-   let tags = '/tags/painting';
-   let maxResults = 'max_results=10';
+   let tags = '/tags/painting/';
+   let maxResults = 'max_results=20';
    let urlParams = '?'+maxResults;
 
-   let url =  baseUrl + tags;
+   let url =  baseUrl + tags + urlParams;
+
+   console.log(url);
 
     // let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
 
@@ -137,11 +130,13 @@ export default {
         
         image_array.filter(function (item) {
 
+          if (typeof item.metadata != "undefined") {
           item.index = '1';
           item.title = item.metadata.edc7qdj4drqbzess34ac;
           item.category = item.metadata.wwkoznngvyehgg3je78w;
           item.filename = 'filename';
           item.thumbnail = '';
+          }
 /*
         if (thisDoc.category=="all") {
            return item;
