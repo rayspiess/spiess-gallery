@@ -99,20 +99,21 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
+   // local - proxy
+   /*
    let baseUrl =  '/api2/image';
-
    let tags = '/tags/' + this.category +'/'; //'/tags/watercolor/';
-   //let tags = '/tags/watercolor/';
-
    let maxResults = 'max_results=20';
    let urlParams = '?'+maxResults;
-
-   let url =  baseUrl + tags + urlParams;
-
    //  /api2/image/tags/watercolor/?max_results=20
-   console.log(url);
+   let url =  baseUrl + tags + urlParams;
+   */
 
-    // let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+  // remote/Netlify - function
+
+  let url =  'https://spiess-gallery.netlify.app/.netlify/functions/image?tags=painting';
+
+   console.log(url);
 
     var  requestObj = {
     'method': 'GET',
