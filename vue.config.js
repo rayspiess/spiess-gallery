@@ -1,5 +1,7 @@
 module.exports = {
 
+  // /api2/image/tags/watercolor/?max_results=20
+
     devServer: {
       proxy: {
         '/api2': {

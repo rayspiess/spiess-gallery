@@ -9,6 +9,7 @@
 <script>
 import Gallery from './components/Gallery.vue'
 import Banner from './components/Banner.vue'
+
 //import CloudinaryUpload from "./components/CloudinaryUpload";
 //import UploadWidget from './components/UploadWidget.vue'
 

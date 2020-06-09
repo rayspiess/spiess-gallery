@@ -15,6 +15,8 @@
 </template>
 <script>
 
+//  https://4columns.org/d-souza-aruna/lorna-simpson
+
 import 'element-ui/lib/theme-chalk/base.css';
 
 export default {

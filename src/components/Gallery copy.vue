@@ -1,15 +1,13 @@
 <template>
   <div class="gallery">
 
-        <ControlPanel v-on:change="controlPanelClick" />
-
 <div class="image-masonry">
 <masonry
   id = "masonryimages" 
   :cols="{default: 4, 1200: 3, 1000: 2, 600: 1}"
   :gutter="{default: '20px', 1200: '15px',1000: '10px'}"
   >
-   <div v-for="image in imageList2" v-bind:key="image.asset_id">
+   <div v-for="image in imageList" v-bind:key="image.asset_id">
       <thumbnail :item="image"  />
   </div>
 </masonry>
@@ -30,7 +28,6 @@ import axios from 'axios'
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 //import cloudinary from 'cloudinary-core';
 
-import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
 import VueMasonry from 'vue-masonry-css'
 import 'element-ui/lib/theme-chalk/base.css';
@@ -41,7 +38,6 @@ export default {
   name: 'Gallery',
     components: {
       thumbnail: Thumbnail,
-      ControlPanel,
    //   imagesizes: Imagesizes
     },
   props: {
@@ -69,9 +65,8 @@ export default {
   mounted () {
     this.show = true;
   
-  this.getImagesList()
-
   /*
+  this.getImagesList()
     .then(response => {
           this.results = response.data;
           console.log(this.results);
@@ -88,12 +83,6 @@ export default {
     //this.jsonData = this.getImageListFromJSON();
   },
   methods: { 
-
-    controlPanelClick: function(event) {
-
-       console.log("controlPanelClick: " + event);
-        this.getImagesList();
-    },
 
     getImagesList: function() {
 
@@ -127,21 +116,19 @@ export default {
      }
      };
 
-    // var image_array = [];
-    var thisDoc = this;
-
      return axios(requestObj)
         .then(response => {
           this.results = response.data;
           console.log(this.results);
           this.jsonData  = response.data.resources;
-          return this.jsonData;
+          return response.data.resources;
         })
-         .then( function(image_data) { 
+         .then( function(image_array) { 
 
-           console.log(image_data);
+           image_array = [];
+           console.log(image_array);
 
-           image_data.filter(function (item) {
+           image_array.filter(function (item) {
            if (typeof item.metadata != "undefined") {
             item.index = '1';
             item.title = item.metadata.edc7qdj4drqbzess34ac;
@@ -155,7 +142,7 @@ export default {
           return a.title < b.title ? -1 : 1;
          });
 
-         thisDoc.imageList = image_data;
+         this.imageList = image_array;
 
          })
         .catch(error => {
@@ -186,11 +173,45 @@ export default {
 
   },
 
-  imageList2: function() {
+  imageListxx: function() {
 
-      return this.imageList;
+    var image_array = "";
 
-    },
+    this.getImagesList()
+    .then(response => {
+          this.results = response.data.resources;
+          console.log(this.results);
+          image_array  = response.data.resources;
+          return image_array;
+        })
+        .then( function(image_array) { 
+
+          console.log("then " + JSON.stringify(image_array) );
+
+          image_array.filter(function (item) {
+           if (typeof item.metadata != "undefined") {
+            item.index = '1';
+            item.title = item.metadata.edc7qdj4drqbzess34ac;
+            item.category = item.metadata.wwkoznngvyehgg3je78w;
+            item.filename = 'filename';
+            item.thumbnail = '';
+           }
+          })
+        // sort 
+         .sort(function (a, b) {
+          return a.title < b.title ? -1 : 1;
+         });
+          return image_array;
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+           console.log("finally");
+           return image_array;
+        });
+        return image_array;
+  },
 
   imageListx: function() {
         //let thisDoc = this;
