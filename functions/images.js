@@ -4,9 +4,11 @@ exports.handler = (event, context, callback) => {
   // number to fetch 
   // tags 
 
-  const name = event.queryStringParameters.name || "World";
+  const tags = event.queryStringParameters.tags || "painting";
 
-  const url = 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image';
+  https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image/tags/drawing
+
+  const url = 'https://917975234378397:FoqQCqQzluD9tI7QZri0Dt_cTto@api.cloudinary.com/v1_1/spiess-co/resources/image/tags/' + tags;
   //const url ='https://jsonplaceholder.typicode.com/todos/1';
   //const url ='/v1_1/spiess-co/resources/image';
 
