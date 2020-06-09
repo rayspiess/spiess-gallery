@@ -110,8 +110,10 @@ export default {
    */
 
   // remote/Netlify - function
-
-  let url =  'https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting';
+   let baseUrl =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+   let tags = '?tags=' + this.category;
+   //  https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting
+   let url =  baseUrl + tags; 
 
    console.log(url);
 
