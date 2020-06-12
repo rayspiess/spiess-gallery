@@ -11,9 +11,16 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
 import Cloudinary from "cloudinary-vue";
 
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
+
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 Vue.use(Vuex)
 Vue.use(Element)
+
+Vue.component('l-map', LMap);
+Vue.component('l-tile-layer', LTileLayer);
+Vue.component('l-marker', LMarker);
 
 import ProgressBar from 'vuejs-progress-bar'
 Vue.use(ProgressBar)
