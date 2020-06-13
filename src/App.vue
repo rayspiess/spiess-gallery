@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <!--   <Banner /> -->
+    <!--   <Banner /> 
       <Map /> 
+      -->
     <Gallery msg="SpiessCo Sandbox"/>
-
   </div>
 </template>
 
 <script>
 
-import Map from './components/Map.vue'
+// import Map from './components/Map.vue'
 import Gallery from './components/Gallery.vue'
 // import Banner from './components/Banner.vue'
 
@@ -19,7 +19,7 @@ import Gallery from './components/Gallery.vue'
 export default {
   name: 'App',
   components: {
-    Map,
+    //Map,
     Gallery, 
     // Banner, 
    //"cl-upload": CloudinaryUpload

@@ -16,18 +16,19 @@
     >
       <l-tile-layer :url="url"></l-tile-layer>
 
-     <l-marker :lat-lng="withPopup">
+   <div v-for="image in imagelist" v-bind:key="image.asset_id">
+     <l-marker :lat-lng="image.latlng">
         <l-popup>
           <div @click="innerClick">
-            I am a popup
-            <p v-show="showParagraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi.
-              Donec finibus semper metus id malesuada.
+            {{image.title}}
+            <p v-show="showParagraph"> 
+              <img :src="image.url" style="width:120px"/> 
             </p>
           </div>
         </l-popup>
       </l-marker>
+  </div>
+
     </l-map>
   </div>
 
@@ -49,7 +50,6 @@ Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-
 export default {
   name: 'Map',
   components: {
@@ -60,23 +60,25 @@ export default {
    //   imagesizes: Imagesizes
     },
   props: {
+    images: Object,
     msg: String
   }, 
   data () {
+    // convert to  decimal - https://www.fcc.gov/media/radio/dms-decimal
     return {
       url:  'https://api.mapbox.com/styles/v1/mapbox/light-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhzcGllc3MiLCJhIjoiY2owaW9kcmFuMDB4NTJ3dGo4MDVhdW45diJ9.EG83GRffs4CjPZ_GiYXotw',
       zoom: 16,
       center: [43.074593, -89.389564],
       withPopup: latLng(43.074593, -89.389564),
       //withTooltip: latLng(43.071592,  -89.405253),
-      showParagraph: false,
+      showParagraph: true,
       bounds: null
     }
   },
   mounted () {
   },
   methods: { 
-        zoomUpdated (zoom) {
+     zoomUpdated (zoom) {
       this.zoom = zoom;
     },
     centerUpdated (center) {
@@ -90,6 +92,26 @@ export default {
     }
   },
   computed: { 
+    imagelist: function() {
+        //let thisDoc = this;
+
+      var image_array = this.images;
+
+              image_array.filter(function (item) {
+
+          if (typeof item.lat != "undefined") {
+
+            let latNum = Number(item.lat);
+            let lngNum = Number(item.lng);
+
+             item.latlng = latLng(latNum, -lngNum);
+
+          }
+
+        })
+
+      return image_array;
+    }
   }
 }
 </script>

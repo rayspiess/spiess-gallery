@@ -1,7 +1,9 @@
 <template>
   <div class="gallery">
 
-        <ControlPanel v-on:change="controlPanelClick" />
+  <Map :images="imageList" />
+
+  <ControlPanel v-on:change="controlPanelClick" />
 
 <div class="image-masonry">
 <masonry
@@ -31,6 +33,7 @@ import axios from 'axios'
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 //import cloudinary from 'cloudinary-core';
 
+import Map from '@/components/Map.vue'
 import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
 import VueMasonry from 'vue-masonry-css'
@@ -43,6 +46,7 @@ export default {
     components: {
       thumbnail: Thumbnail,
       ControlPanel,
+      Map
    //   imagesizes: Imagesizes
     },
   props: {
@@ -62,6 +66,8 @@ export default {
         index: '1',
         title: 'title', 
         category: 'cat',
+        lat: '',
+        lon: '',
         filename: 'filename',
         thumbnail: ''
       },
@@ -101,22 +107,22 @@ export default {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
    // local - proxy  
-   /*
+     /*
    let baseUrl =  '/api2/image';
    let tags = '/tags/' + this.category +'/'; //'/tags/watercolor/';
    let maxResults = 'max_results=20';
    let urlParams = '?'+maxResults;
    //  /api2/image/tags/watercolor/?max_results=20
    let url =  baseUrl + tags + urlParams;
-   */ 
+      */ 
 
   // remote/Netlify - function
-  
+
    let baseUrl =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
    let tags = '?tags=' + this.category;
    //  https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting
    let url =  baseUrl + tags; 
-   
+
 
    console.log(url);
 
@@ -152,6 +158,10 @@ export default {
             item.index = '1';
             item.title = item.metadata.edc7qdj4drqbzess34ac;
             item.category = item.metadata.wwkoznngvyehgg3je78w;
+
+            item.lat =  item.metadata.hcmz1pmgo2blx0blrjhy;
+            item.lng =  item.metadata.antpxblxugydxoazub0u;
+
             item.filename = 'filename';
             item.thumbnail = '';
            }
@@ -189,13 +199,10 @@ export default {
 
     console.log("computed category: " + this.$store.state.category );
     return this.$store.state.category;
-
   },
 
   imageList2: function() {
-
       return this.imageList;
-
     },
 
   imageListx: function() {
