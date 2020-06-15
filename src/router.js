@@ -31,7 +31,7 @@ export default new Router({
     
       { 
       // gallery/2019/06/2019-04-02_14-31-57-0500.jpg
-      path: '/mural/:id', 
+      path: '/mural/blm/:id', 
       component: function(resolve) {
         require(['./App.vue'], resolve);
 

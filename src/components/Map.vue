@@ -19,7 +19,7 @@
    <div v-for="image in imagelist" v-bind:key="image.asset_id">
      <l-marker :lat-lng="image.latlng">
         <l-popup  :options="{ permanent: false, interactive: true }">
-          <div @click="innerClick">
+          <div @click="innerClick(image.public_id)">
             {{image.title}}
             <p v-show="showParagraph"> 
               <img :src="image.url" style="width:120px"/> 
@@ -32,12 +32,15 @@
     </l-map>
   </div>
 
+
 </template>
 <script>
 
 //  https://4columns.org/d-souza-aruna/lorna-simpson
 
 import 'element-ui/lib/theme-chalk/base.css';
+
+import router from '@/router'
 
 import { latLng } from "leaflet";
 //import {LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
@@ -89,8 +92,10 @@ export default {
     boundsUpdated (bounds) {
       this.bounds = bounds;
     },
-    innerClick() {
-      alert("Click!");
+    innerClick(public_id) {
+      
+    router.push({ path: '/mural/' +  public_id  })
+     // alert("Click!");
     }
   },
   computed: { 

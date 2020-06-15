@@ -7,7 +7,7 @@
     <transition name="el-fade-in-linear">
     <div v-show="show" class="transition-show">
 
-<cld-image :publicId="imageId" >
+<cld-image :publicId="public_id" >
   <cld-transformation flags="force_strip" width="420" crop="scale" />
 </cld-image>
 
@@ -16,7 +16,7 @@
     </el-col>
 
   <el-col :span="12" style="background:#eaeafa;" >
-    <h2>{{tile}}</h2>
+    <h2>{{title}}</h2>
     <p>Artist: {{artist}}<br/>
     Address: {{address}}
     </p>
@@ -38,7 +38,7 @@ export default {
    //   imagesizes: Imagesizes
     },
   props: {
-    imageId: String
+    imageObject: Object
   }, 
   data () {
     return {
@@ -57,6 +57,41 @@ export default {
 
   },
   computed: { 
+    public_id:function() { 
+       if (typeof this.imageObject != "undefined") {
+        return this.imageObject.public_id
+      }
+      else {
+        return '';
+      }
+    },
+
+    title: function() { 
+
+           if (typeof this.imageObject != "undefined") {
+      return this.imageObject.title
+            }
+      else {
+        return '';
+      }
+
+    },
+    artist: function() { 
+             if (typeof this.imageObject != "undefined") {
+      return this.imageObject.artist
+            }
+      else {
+        return '';
+      }
+    },
+    address: function() { 
+       if (typeof this.imageObject != "undefined") {
+      return this.imageObject.address
+                  }
+      else {
+        return '';
+      }
+    }
   }
 }
 </script>
