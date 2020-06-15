@@ -1,6 +1,8 @@
 <template>
   <div class="gallery">
 
+   <Hero :imageId="item.publicId" />
+
   <Map :images="imageList" />
 
   <ControlPanel v-on:change="controlPanelClick" />
@@ -33,6 +35,7 @@ import axios from 'axios'
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 //import cloudinary from 'cloudinary-core';
 
+import Hero from '@/components/Hero.vue'
 import Map from '@/components/Map.vue'
 import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
@@ -44,9 +47,10 @@ Vue.use(VueMasonry)
 export default {
   name: 'Gallery',
     components: {
-      thumbnail: Thumbnail,
+      Hero,
+      Map,
       ControlPanel,
-      Map
+      thumbnail: Thumbnail,
    //   imagesizes: Imagesizes
     },
   props: {
@@ -61,13 +65,16 @@ export default {
       jsonData2: [],
       imageList: [],
       max_results: 10,
-      next_cursor: null,
+      next_cursor: null,  
       item: {
         index: '1',
+        publicId: 'bml/IMG_0582_qbsgbb',
         title: 'title', 
         category: 'cat',
         lat: '',
         lon: '',
+        artist: '',
+        artistlink:'',
         filename: 'filename',
         thumbnail: ''
       },
@@ -107,22 +114,22 @@ export default {
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
    // local - proxy  
-     /*
+    
    let baseUrl =  '/api2/image';
    let tags = '/tags/' + this.category +'/'; //'/tags/watercolor/';
    let maxResults = 'max_results=20';
    let urlParams = '?'+maxResults;
    //  /api2/image/tags/watercolor/?max_results=20
    let url =  baseUrl + tags + urlParams;
-      */ 
+      
 
   // remote/Netlify - function
-
+ /*
    let baseUrl =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
    let tags = '?tags=' + this.category;
    //  https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting
    let url =  baseUrl + tags; 
-
+*/ 
 
    console.log(url);
 

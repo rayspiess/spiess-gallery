@@ -28,20 +28,19 @@ export default new Router({
         require(['./views/Home.vue'], resolve);
       }
     },
-    /*
+    
       { 
       // gallery/2019/06/2019-04-02_14-31-57-0500.jpg
-      path: '/image/:year/:month/:id', 
+      path: '/mural/:id', 
       component: function(resolve) {
-        require(['./views/imageview.vue'], resolve);
+        require(['./App.vue'], resolve);
 
       //  this.$store.dispatch('changeCategory', "craft");
       //  console.log( this.$store.state.category );
 
       },
-     // props: { category: "all", imagepath: $route.params.fullPath }
-      props: (route) => ({ category: "all", imagepath: route.params }) 
+       props: (route) => ({ category: "all", muralid: route.params.id }) 
     },   
-    */    
+      
   ]
 })

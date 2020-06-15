@@ -1,13 +1,13 @@
 <template>
 
-<div style="height: 350px;">
+<div style="height: 300px;">
     <div class="info" style="height: 15%">
       <span>Center: {{ center }}</span>
       <span>Zoom: {{ zoom }}</span>
       <span>Bounds: {{ bounds }}</span>
     </div>
     <l-map
-      style="height: 80%; width: 80%; margin: 0 auto;"
+      style="height: 80%; width: 95%; margin: 0 auto;"
       :zoom="zoom"
       :center="center"
       @update:zoom="zoomUpdated"
@@ -18,7 +18,7 @@
 
    <div v-for="image in imagelist" v-bind:key="image.asset_id">
      <l-marker :lat-lng="image.latlng">
-        <l-popup>
+        <l-popup  :options="{ permanent: false, interactive: true }">
           <div @click="innerClick">
             {{image.title}}
             <p v-show="showParagraph"> 
@@ -40,6 +40,7 @@
 import 'element-ui/lib/theme-chalk/base.css';
 
 import { latLng } from "leaflet";
+//import {LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
 import {LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 import { Icon } from 'leaflet';
 
@@ -57,19 +58,20 @@ export default {
       LTileLayer,
       LMarker,
       LPopup,
+     // LTooltip
    //   imagesizes: Imagesizes
     },
   props: {
-    images: Object,
+    images: Array,
     msg: String
   }, 
   data () {
     // convert to  decimal - https://www.fcc.gov/media/radio/dms-decimal
     return {
       url:  'https://api.mapbox.com/styles/v1/mapbox/light-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhzcGllc3MiLCJhIjoiY2owaW9kcmFuMDB4NTJ3dGo4MDVhdW45diJ9.EG83GRffs4CjPZ_GiYXotw',
-      zoom: 16,
-      center: [43.074593, -89.389564],
-      withPopup: latLng(43.074593, -89.389564),
+      zoom: 16.5,
+      center: [43.074753, -89.391754],
+      withPopup: latLng(43.074593, -89.392564),
       //withTooltip: latLng(43.071592,  -89.405253),
       showParagraph: true,
       bounds: null
