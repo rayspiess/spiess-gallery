@@ -1,11 +1,13 @@
 <template>
 
 <div style="height: 300px;">
+  <!--
     <div class="info" style="height: 15%">
       <span>Center: {{ center }}</span>
       <span>Zoom: {{ zoom }}</span>
       <span>Bounds: {{ bounds }}</span>
     </div>
+    -->
     <l-map
       style="height: 80%; width: 95%; margin: 0 auto;"
       :zoom="zoom"
@@ -17,7 +19,19 @@
       <l-tile-layer :url="url"></l-tile-layer>
 
    <div v-for="image in imagelist" v-bind:key="image.asset_id">
-     <l-marker :lat-lng="image.latlng">
+     <l-marker :lat-lng="image.latlng" >
+
+       <LIcon
+          :options="{
+            iconUrl:      '/marker-icon-black.png',
+            shadowUrl:    '/marker-shadow.png',
+            iconSize:     [25, 41], // size of the icon
+            shadowSize:   [25, 41], // size of the shadow
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+          }"/>
+
         <l-popup  :options="{ permanent: false, interactive: true }">
           <div @click="innerClick(image.public_id)">
             {{image.title}}
@@ -44,7 +58,7 @@ import router from '@/router'
 
 import { latLng } from "leaflet";
 //import {LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
-import {LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LIcon, LPopup } from 'vue2-leaflet';
 import { Icon } from 'leaflet';
 
 delete Icon.Default.prototype._getIconUrl;
@@ -60,6 +74,7 @@ export default {
       LMap,
       LTileLayer,
       LMarker,
+      LIcon, 
       LPopup,
      // LTooltip
    //   imagesizes: Imagesizes
@@ -77,10 +92,12 @@ export default {
       withPopup: latLng(43.074593, -89.392564),
       //withTooltip: latLng(43.071592,  -89.405253),
       showParagraph: true,
-      bounds: null
+      bounds: null,
+      blackicon : null
     }
   },
   mounted () {
+
   },
   methods: { 
      zoomUpdated (zoom) {
