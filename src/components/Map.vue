@@ -1,6 +1,8 @@
 <template>
 
 <div style="height: 300px;">
+<i class="el-icon-location"></i>
+  
   <!--
     <div class="info" style="height: 15%">
       <span>Center: {{ center }}</span>
@@ -21,6 +23,14 @@
    <div v-for="image in imagelist" v-bind:key="image.asset_id">
      <l-marker :lat-lng="image.latlng" >
 
+<l-icon
+          :icon-anchor="staticAnchor"
+          class-name="someExtraClass">
+<div class="headline">{{ customText }}</div>
+<i class="el-icon-location"></i>
+</l-icon>
+
+<!--
        <LIcon
           :options="{
             iconUrl:      '/marker-icon-black.png',
@@ -31,6 +41,7 @@
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
           }"/>
+          -->
 
         <l-popup  :options="{ permanent: false, interactive: true }">
           <div @click="innerClick(image.public_id)">
@@ -93,7 +104,9 @@ export default {
       //withTooltip: latLng(43.071592,  -89.405253),
       showParagraph: true,
       bounds: null,
-      blackicon : null
+      blackicon : null,
+       staticAnchor: [16, 37],
+      customText: 'Foobar',
     }
   },
   mounted () {
