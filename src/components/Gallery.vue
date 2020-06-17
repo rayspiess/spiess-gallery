@@ -113,23 +113,26 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-   // local - proxy  
-    /*
-   let baseUrl =  '/api2/image';
-   let tags = '/tags/' + this.category +'/'; //'/tags/watercolor/';
-   let maxResults = 'max_results=20';
-   let urlParams = '?'+maxResults;
-   //  /api2/image/tags/watercolor/?max_results=20
-   let url =  baseUrl + tags + urlParams;
-      */ 
+    let env = "local";
+    //let env = "remote";
+    var url = "";
 
-  // remote/Netlify - function
- 
-   let baseUrl =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
-   let tags = '?tags=' + this.category;
-   //  https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting
-   let url =  baseUrl + tags; 
-
+   if (env=="local") {
+     // local - proxy  
+     let baseUrl =  '/api2/image';
+     let tags = '/tags/' + this.category +'/'; //'/tags/watercolor/';
+     let maxResults = 'max_results=20';
+     let urlParams = '?'+maxResults;
+     //  /api2/image/tags/watercolor/?max_results=20
+     url =  baseUrl + tags + urlParams;
+   }
+   else {
+    // remote/Netlify - function
+    let baseUrl =  'https://spiess-gallery.netlify.app/.netlify/functions/images';
+    let tags = '?tags=' + this.category;
+     //  https://spiess-gallery.netlify.app/.netlify/functions/images?tags=painting
+     url =  baseUrl + tags; 
+   }
 
    console.log(url);
 
@@ -210,30 +213,36 @@ export default {
 
   pageImage: function() {
      //   let thisDoc = this;
+      var image_array = this.imageList2;
+      let muralId  =  this.$route.params.id;
 
-        var image_array = this.imageList2;
-        let muralId  =  this.$route.params.id;
-
-         console.log("muralId: " +   'blm/'  + muralId );
-
-       //  blm/IMG_0582_qbsgbb
+      console.log("muralId: " +   'blm/'  + muralId );
+      //  blm/IMG_0582_qbsgbb
 
     // return image_array.filter(item => item.public_id == 'blm/'  + muralId);
       
-      return image_array.filter(function (item) {
-
-        console.log("muralId: " + item.public_id  + '  -  ' + 'blm/'  +  muralId );
-          
+      let filtered_array = image_array.filter(function (item) {
+        // console.log("muralId: " + item.public_id  + '  -  ' + 'blm/'  +  muralId );
         return (item.public_id  ==  'blm/'  + muralId   );
-
         //if (item.public_id  ==  'blm/'  + muralId   ) {
         //   return item;
        // }
+      });
 
-      })
-
+      if (filtered_array.length > 0) {
+        return filtered_array;
+      }
+      else {
+        return [{
+          artist:"@TRIANGULADOR",
+          address:"xxx State Street",
+          title:"Inclusion",
+          public_id:"blm/IMG_0582_qbsgbb",
+          url:"http://res.cloudinary.com/spiess-co/image/upload/v1592068307/blm/IMG_0582_qbsgbb.jpg"
+        }]
+      }
+      
       // return image_array;
-
     }
   }
 }

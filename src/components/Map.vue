@@ -1,8 +1,6 @@
 <template>
 
 <div style="height: 300px;">
-<i class="el-icon-location"></i>
-  
   <!--
     <div class="info" style="height: 15%">
       <span>Center: {{ center }}</span>
@@ -24,10 +22,10 @@
      <l-marker :lat-lng="image.latlng" >
 
 <l-icon
-          :icon-anchor="staticAnchor"
-          class-name="someExtraClass">
-<div class="headline">{{ customText }}</div>
-<i class="el-icon-location"></i>
+    :icon-anchor="staticAnchor"
+    class-name="someExtraClass">
+   <!-- <div class="headline">{{ customText }}</div>  -->
+    <i class="el-icon-location" style="font-size:32px"></i>
 </l-icon>
 
 <!--
