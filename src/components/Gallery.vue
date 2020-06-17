@@ -113,8 +113,8 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-    let env = "local";
-    //let env = "remote";
+    //let env = "local";
+    let env = "remote";
     var url = "";
 
    if (env=="local") {
@@ -258,9 +258,6 @@ export default {
     transition-property: opacity;
     transition-duration: 3s;
   }
-
-
-
 
 .thumbnail img{
   width:100% !important;
