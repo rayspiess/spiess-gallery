@@ -3,7 +3,7 @@
   
   <Hero :imageObject="pageImage[0]" />
 
-  <Map :images="imageList" />
+  <Map :images="imageList" :selectedImageID="imageID" />
 
   <ControlPanel v-on:change="controlPanelClick" />
 
@@ -68,7 +68,7 @@ export default {
       next_cursor: null,  
       item: {
         index: '1',
-        publicId: 'blm/IMG_0582_qbsgbb',
+        public_id: 'blm/IMG_0582_qbsgbb',
         title: 'title', 
         category: 'cat',
         lat: '',
@@ -82,6 +82,7 @@ export default {
   },
   mounted () {
     this.show = true;
+   // this.item.public_id= 'blm/' + this.$route.params.id;
   
   this.getImagesList()
 
@@ -113,8 +114,8 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-    //let env = "local";
-    let env = "remote";
+    let env = "local";
+    //let env = "remote";
     var url = "";
 
    if (env=="local") {
@@ -161,10 +162,15 @@ export default {
         })
          .then( function(image_data) { 
 
-           console.log(image_data);
+           //console.log(image_data);
 
            image_data.filter(function (item) {
            if (typeof item.metadata != "undefined") {
+             
+             // public_id:"blm/IMG_0582_qbsgbb"
+             
+             //console.log("image_data fetch: " + item.public_id + ' -- ' +  'blm/' + thisDoc.$route.params.id);
+
             item.index = '1';
             item.title = item.metadata.edc7qdj4drqbzess34ac;
             item.category = item.metadata.wwkoznngvyehgg3je78w;
@@ -178,6 +184,7 @@ export default {
 
             item.filename = 'filename';
             item.thumbnail = '';
+
            }
           })
         // sort 
@@ -205,11 +212,15 @@ export default {
     return this.$store.state.category;
   },
 
-  imageList2: function() {
-      return this.imageList;
+
+  imageID: function() {
+      return 'blm/' + this.$route.params.id;
     },
 
 
+  imageList2: function() {
+      return this.imageList;
+    },
 
   pageImage: function() {
      //   let thisDoc = this;

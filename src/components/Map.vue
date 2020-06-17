@@ -23,7 +23,7 @@
 
 <l-icon
     :icon-anchor="staticAnchor"
-    class-name="someExtraClass">
+    :class-name="image.class">
    <!-- <div class="headline">{{ customText }}</div>  -->
     <i class="el-icon-location" style="font-size:32px"></i>
 </l-icon>
@@ -90,13 +90,14 @@ export default {
     },
   props: {
     images: Array,
-    msg: String
+    selectedImageID: String
   }, 
   data () {
     // convert to  decimal - https://www.fcc.gov/media/radio/dms-decimal
     return {
       url:  'https://api.mapbox.com/styles/v1/mapbox/light-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhzcGllc3MiLCJhIjoiY2owaW9kcmFuMDB4NTJ3dGo4MDVhdW45diJ9.EG83GRffs4CjPZ_GiYXotw',
       zoom: 16.5,
+      zoomControl: false,
       center: [43.074753, -89.391754],
       withPopup: latLng(43.074593, -89.392564),
       //withTooltip: latLng(43.071592,  -89.405253),
@@ -128,11 +129,11 @@ export default {
   },
   computed: { 
     imagelist: function() {
-        //let thisDoc = this;
+      let thisDoc = this;
 
       var image_array = this.images;
 
-              image_array.filter(function (item) {
+      image_array.filter(function (item) {
 
           if (typeof item.lat != "undefined") {
 
@@ -140,10 +141,14 @@ export default {
             let lngNum = Number(item.lng);
 
              item.latlng = latLng(latNum, -lngNum);
-
           }
-
-        })
+          if (item.public_id == thisDoc.selectedImageID) {
+            item.class = 'hero';  
+          } 
+          else {
+            item.class = '';
+          }
+      })
 
       return image_array;
     }
@@ -154,7 +159,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
 
+   .hero i {
+     color: #c5050c;
+   }
+
   .transition-box {
+   
   }
 
   .transition-box2 {
