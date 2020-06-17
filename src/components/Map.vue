@@ -9,6 +9,7 @@
     </div>
     -->
     <l-map
+     :options="{zoomControl:false, boxZoom: false, minZoom:16.5,maxZoom:16.5 }"
       style="height: 80%; width: 95%; margin: 0 auto;"
       :zoom="zoom"
       :center="center"
@@ -22,6 +23,7 @@
      <l-marker :lat-lng="image.latlng" >
 
 <l-icon
+    :options="{iconAnchor:   [22, 94], popupAnchor:  [-3, -76]}"
     :icon-anchor="staticAnchor"
     :class-name="image.class">
    <!-- <div class="headline">{{ customText }}</div>  -->
@@ -43,7 +45,7 @@
 
         <l-popup  :options="{ permanent: false, interactive: true }">
           <div @click="innerClick(image.public_id)">
-            {{image.title}}
+         <!--   {{image.title}} -->
             <p v-show="showParagraph"> 
               <img :src="image.url" style="width:120px"/> 
             </p>
@@ -97,7 +99,6 @@ export default {
     return {
       url:  'https://api.mapbox.com/styles/v1/mapbox/light-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhzcGllc3MiLCJhIjoiY2owaW9kcmFuMDB4NTJ3dGo4MDVhdW45diJ9.EG83GRffs4CjPZ_GiYXotw',
       zoom: 16.5,
-      zoomControl: false,
       center: [43.074753, -89.391754],
       withPopup: latLng(43.074593, -89.392564),
       //withTooltip: latLng(43.071592,  -89.405253),

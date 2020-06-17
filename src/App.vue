@@ -3,7 +3,7 @@
     <!--   <Banner /> 
       <Map /> 
       -->
-    <Gallery msg="SpiessCo Sandbox"/>
+    <Gallery msg="--"/>
   </div>
 </template>
 

@@ -20,7 +20,7 @@
 </div>
     <h1>{{ msg }}</h1>
     <p>
-      A test sandbox for a Vue.js, Cloudinary, Netlify gallery<br>
+      A test/dev spot for a Vue.js, Cloudinary, Netlify gallery<br>
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
@@ -68,7 +68,7 @@ export default {
       next_cursor: null,  
       item: {
         index: '1',
-        public_id: 'blm/IMG_0582_qbsgbb',
+        public_id: 'blm/IMG_0534_eayqbh',
         title: 'title', 
         category: 'cat',
         lat: '',
@@ -114,8 +114,8 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-    let env = "local";
-    //let env = "remote";
+    //let env = "local";
+    let env = "remote";
     var url = "";
 
    if (env=="local") {
@@ -245,11 +245,11 @@ export default {
       }
       else {
         return [{
-          artist:"@TRIANGULADOR",
-          address:"xxx State Street",
-          title:"Inclusion",
-          public_id:"blm/IMG_0582_qbsgbb",
-          url:"http://res.cloudinary.com/spiess-co/image/upload/v1592068307/blm/IMG_0582_qbsgbb.jpg"
+          artist:"",
+          address:"200 block of State Street",
+          title:"Black Lives Matter",
+          public_id:"blm/IMG_0534_eayqbh",
+          url:"http://res.cloudinary.com/spiess-co/image/upload/v1592068307/blm/IMG_0534_eayqbh.jpg"
         }]
       }
       

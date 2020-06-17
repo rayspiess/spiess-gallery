@@ -2,7 +2,7 @@
   <div class="hero">
     <el-row type="flex" class="row-bg" justify="center">
 
-    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12"  style="background:#eaeaea;" >
+    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12"  style="background:#fafafa;" >
   
     <transition name="el-fade-in-linear">
     <div v-show="show" class="transition-show">
@@ -111,7 +111,7 @@ export default {
 <style >
 
 .hero-image {
-    border: solid 4px #fefefe;
+    border: solid 4px #fafafa;
     box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2);
     display: inline-block;
     line-height: 0;
@@ -122,7 +122,7 @@ export default {
 }
 
 .hero-info { 
-  background:#eaeafa;
+  background:#fafafa;
   text-align: left;
 }
 
