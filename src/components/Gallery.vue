@@ -1,7 +1,8 @@
 <template>
   <div class="gallery">
   
-  <Hero :imageObject="pageImage[0]" />
+  <!-- <Hero :imageObject="pageImage[0]" /> -->
+  <Hero  :images="imageList" :selectedImageID="imageID" />
 
   <Map :images="imageList" :selectedImageID="imageID" />
 
@@ -13,7 +14,7 @@
   :cols="{default: 4, 1200: 3, 1000: 2, 600: 1}"
   :gutter="{default: '20px', 1200: '15px',1000: '10px'}"
   >
-   <div v-for="image in imageList2" v-bind:key="image.asset_id">
+   <div v-for="image in imageList" :selectedImageID="imageID" v-bind:key="image.asset_id">
       <thumbnail :item="image"  />
   </div>
 </masonry>
@@ -35,7 +36,7 @@ import axios from 'axios'
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 //import cloudinary from 'cloudinary-core';
 
-import Hero from '@/components/Hero.vue'
+import Hero from '@/components/HeroCarousel.vue'
 import Map from '@/components/Map.vue'
 import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
@@ -114,8 +115,8 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-    //let env = "local";
-    let env = "remote";
+    let env = "local";
+    //let env = "remote";
     var url = "";
 
    if (env=="local") {
