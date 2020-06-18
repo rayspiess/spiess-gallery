@@ -105,8 +105,8 @@ export default {
       image_array.filter(function (item, index) {
 
           if (item.public_id == thisDoc.selectedImageID) {
-           thisDoc.selected_image_index = index;
-           thisDoc.$refs.carousel.setActiveItem(index);
+             console.log("image ID: " + index)
+            thisDoc.$refs.carousel.setActiveItem(index);
           } 
           else {
             item.class = '';

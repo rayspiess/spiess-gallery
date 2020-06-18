@@ -1,10 +1,10 @@
 <template>
   <div class="gallery">
   
-  <!-- <Hero :imageObject="pageImage[0]" /> -->
-  <Hero  :images="imageList" :selectedImageID="imageID" />
+<Hero :imageObject="pageImage[0]" /> 
+   <!--  <Hero  :images="imageList"  :selectedImageID="imageID" /> -->
 
-  <Map :images="imageList" :selectedImageID="imageID" />
+  <Map :images="imageList2" :selectedImageID="imageID" />
 
   <ControlPanel v-on:change="controlPanelClick" />
 
@@ -36,7 +36,8 @@ import axios from 'axios'
 //import {CldContext, CldImage, CldVideo, CldTransformation, CldPoster} from 'cloudinary-vue';
 //import cloudinary from 'cloudinary-core';
 
-import Hero from '@/components/HeroCarousel.vue'
+import Hero from '@/components/Hero.vue'
+//import Hero from '@/components/HeroCarousel.vue'
 import Map from '@/components/Map.vue'
 import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
@@ -213,7 +214,6 @@ export default {
     return this.$store.state.category;
   },
 
-
   imageID: function() {
 
        if (this.$route.params.id != undefined) {
@@ -222,9 +222,7 @@ export default {
        else {
          return this.item.public_id;
        }
-
     },
-
 
   imageList2: function() {
       return this.imageList;
