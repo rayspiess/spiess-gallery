@@ -215,7 +215,14 @@ export default {
 
 
   imageID: function() {
-      return 'blm/' + this.$route.params.id;
+
+       if (this.$route.params.id != undefined) {
+          return 'blm/' + this.$route.params.id;
+       }
+       else {
+         return this.item.public_id;
+       }
+
     },
 
 
