@@ -123,6 +123,8 @@ export default {
     },
     innerClick(public_id) {
       
+    var thisDoc = this; 
+
     this.$emit('changeimageid', public_id);
 
       this.imagelist.filter(function (item) {
@@ -131,6 +133,7 @@ export default {
 
           if (item.public_id == public_id) {
             item.class = 'hero';  
+            thisDoc.centerUpdated(item.latlng);
           } 
           else {
             item.class = '';
@@ -138,9 +141,9 @@ export default {
 
           }
       })
-
-
-     this.centerUpdated({"lat":43.07474667019842,"lng":-89.39293594576539});
+     
+    
+    // this.centerUpdated({"lat":43.07474667019842,"lng":-89.39293594576539});
 
      router.push({ path: '/mural/' +  public_id  })
      // alert("Click!");
