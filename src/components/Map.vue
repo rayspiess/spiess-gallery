@@ -9,6 +9,7 @@
     </div>
     -->
     <l-map
+      ref="map"  
      :options="{zoomControl:false, boxZoom: false, minZoom:16.5,maxZoom:16.5 }"
       style="height: 80%; width: 95%; margin: 0 auto;"
       :zoom="zoom"
@@ -57,16 +58,13 @@
     </l-map>
   </div>
 
-
 </template>
 <script>
 
 //  https://4columns.org/d-souza-aruna/lorna-simpson
 
 import 'element-ui/lib/theme-chalk/base.css';
-
 import router from '@/router'
-
 import { latLng } from "leaflet";
 //import {LMap, LTileLayer, LMarker, LTooltip } from 'vue2-leaflet';
 import {LMap, LTileLayer, LMarker, LIcon, LPopup } from 'vue2-leaflet';
@@ -117,6 +115,7 @@ export default {
       this.zoom = zoom;
     },
     centerUpdated (center) {
+       console.log("centerUpdated: " + JSON.stringify(center) );
       this.center = center;
     },
     boundsUpdated (bounds) {
@@ -124,13 +123,32 @@ export default {
     },
     innerClick(public_id) {
       
-    router.push({ path: '/mural/' +  public_id  })
+    this.$emit('changeimageid', public_id);
+
+      this.imagelist.filter(function (item) {
+
+          if (typeof public_id != "undefined") {
+
+          if (item.public_id == public_id) {
+            item.class = 'hero';  
+          } 
+          else {
+            item.class = '';
+          }
+
+          }
+      })
+
+
+     this.centerUpdated({"lat":43.07474667019842,"lng":-89.39293594576539});
+
+     router.push({ path: '/mural/' +  public_id  })
      // alert("Click!");
     }
   },
   computed: { 
     imagelist: function() {
-      let thisDoc = this;
+      //let thisDoc = this;
 
       var image_array = this.images;
 
@@ -143,14 +161,13 @@ export default {
 
              item.latlng = latLng(latNum, -lngNum);
           }
-          if (item.public_id == thisDoc.selectedImageID) {
+          if (item.selected) {
             item.class = 'hero';  
           } 
           else {
             item.class = '';
           }
       })
-
       return image_array;
     }
   }

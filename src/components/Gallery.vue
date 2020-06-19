@@ -4,7 +4,7 @@
 <Hero :imageObject="pageImage[0]" /> 
    <!--  <Hero  :images="imageList"  :selectedImageID="imageID" /> -->
 
-  <Map :images="imageList2" :selectedImageID="imageID" />
+  <Map :images="imageList2" v-on:changeimageid="changeImageId" />
 
   <ControlPanel v-on:change="controlPanelClick" />
 
@@ -27,7 +27,7 @@
     </p>
   </div>
 </template>
-+
+
 <script>
 import Vue from 'vue'
 import axios from 'axios'
@@ -85,6 +85,10 @@ export default {
   mounted () {
     this.show = true;
    // this.item.public_id= 'blm/' + this.$route.params.id;
+
+  if (typeof this.$route.params.id != "undefined") {
+      this.item.public_id = 'blm/' + this.$route.params.id;
+  }
   
   this.getImagesList()
 
@@ -105,6 +109,16 @@ export default {
     //this.jsonData = this.getImageListFromJSON();
   },
   methods: { 
+
+    changeImageId: function(event) {
+       console.log("Gallery: changeImageId: " + event);
+
+      if (event != undefined) {
+
+        this.item.public_id = event;
+        
+      }
+    },
 
     controlPanelClick: function(event) {
 
@@ -225,7 +239,25 @@ export default {
     },
 
   imageList2: function() {
-      return this.imageList;
+    let thisDoc = this;
+    let muralId  =  this.$route.params.id;
+    console.log("muralId: " +   'blm/'  + muralId );
+
+      var image_array = this.imageList;
+
+      image_array.filter(function (item) {
+
+      if (typeof item.public_id != "undefined") {
+          if (item.public_id == thisDoc.item.public_id) {
+            item.selected = true;  
+          } 
+          else {
+            item.selected = false;
+          }
+      }
+      })
+      return image_array;
+
     },
 
   pageImage: function() {
