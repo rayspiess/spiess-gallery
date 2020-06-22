@@ -35,7 +35,6 @@
     </p>
     </el-card>
 
-
     </el-col>
 
   <el-col :xs="0" :sm="12" :md="10" :lg="10" :xl="10" class="hero-info" >
@@ -64,7 +63,6 @@ export default {
     },
   props: {
     images: Array,
-    selectedImageID: String
   }, 
   data () {
     return {
@@ -74,6 +72,7 @@ export default {
       jsonData: [],
       max_results: 10,
       next_cursor: null,
+      selectedImageID: "",
       selected_image_index: 0
     }
   },
@@ -83,9 +82,13 @@ export default {
   methods: { 
 
     newslide:function(event) { 
-       console.log("newslide: " + event)
-     //  console.log("newslide: " + this.imageArray[event].public_id );
-      // this.$refs.carousel.setActiveItem(this.selected_image_index);
+      console.log("newslide: " + event);
+
+      console.log("newslide image: " + this.imagelist[event].public_id);
+
+      //  console.log("newslide: " + this.imageArray[event].public_id );
+     // this.$refs.carousel.setActiveItem(event);
+      this.$emit('changeimageid', this.imagelist[event].public_id);
     }
 
   },
@@ -104,13 +107,13 @@ export default {
 
       image_array.filter(function (item, index) {
 
-          if (item.public_id == thisDoc.selectedImageID) {
-             console.log("image ID: " + index)
+          if (item.selected == true) {
+            console.log("image: " + item + " index: " + index)
             thisDoc.$refs.carousel.setActiveItem(index);
+            
+            thisDoc.selectedImageID = item.public_id;
+           // thisDoc.$emit('changeimageid', item.public_id);
           } 
-          else {
-            item.class = '';
-          }
       })
 
       return image_array;

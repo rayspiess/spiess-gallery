@@ -40,7 +40,7 @@ export const store = new Vuex.Store({
   state: {
     count: 77,
     tags: '/tags/paintingx/',
-    category: 'blm',
+    category: 'watercolor',
   //  category: 'watercolor',
     // https://www.npmjs.com/package/vue-masonry-css
     masonry: {

@@ -14,23 +14,31 @@
     </div >
     </transition>
 
-    <el-card class="box-card hidden-sm-and-up">
-    <h2>{{title}}</h2>
+    <el-card class="box-card hidden-sm-and-up" style="width:80%">
+   
+    <h2>Summer</h2>
+    <p>Ink on paper. 4 x 4 inches</p>
+
+    <!--
     <p>Artist: {{artist}}<br/>
     Address: {{address}}
     </p>
+      -->
     </el-card>
 
 
     </el-col>
 
-  <el-col :xs="0" :sm="12" :md="12" :lg="12" :xl="12" class="hero-info" >
+  <el-col :xs="0" :sm="10" :md="12" :lg="12" :xl="12" class="hero-info" >
 
     <el-card class="box-card hidden-xs-only">
-    <h2>{{title}}</h2>
+      <h2>Summer</h2>
+    <p>Ink on paper. 4 x 4 inches</p>
+     <!--
     <p>Artist: {{artist}}<br/>
     Address: {{address}}
     </p>
+    -->
     </el-card>
   </el-col>
 

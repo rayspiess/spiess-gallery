@@ -41,7 +41,7 @@
     <div class="dialog-footer-text">
     <!-- <p><a :href="'/image/' + item.rootfilename">{{item.title}}</a><p> --> 
     <p class = "title">{{item.title}}<p>
-    <p>{{item.category}}</p>
+    <p class = "subcat">{{item.category}}</p>
     </div>
     <!--
     <el-button @click="centerDialogVisible = false">Cancel</el-button>
@@ -224,5 +224,10 @@ a {
     margin-bottom: 1rem;
 }
 
+.title {
+
+  font-size: 22px;
+
+}
 
 </style>

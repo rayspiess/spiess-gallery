@@ -1,10 +1,17 @@
 <template>
   <div class="gallery">
-  
-<Hero :imageObject="pageImage[0]" /> 
-   <!--  <Hero  :images="imageList"  :selectedImageID="imageID" /> -->
 
+    <el-row type="flex" class="row-bg header" justify="center">
+    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12"   >
+     <p>Gallery - Ray Spiess - Madison, Wisconsin - WIP </p>
+    </el-col>
+    </el-row>
+  
+<Hero :imageObject="pageImage[0]" />
+
+ <!-- <Hero :images="imageList2" v-on:changeimageid="changeImageId" /> 
   <Map :images="imageList2" v-on:changeimageid="changeImageId" />
+ -->
 
   <ControlPanel v-on:change="controlPanelClick" />
 
@@ -38,7 +45,7 @@ import axios from 'axios'
 
 import Hero from '@/components/Hero.vue'
 //import Hero from '@/components/HeroCarousel.vue'
-import Map from '@/components/Map.vue'
+//import Map from '@/components/Map.vue'
 import ControlPanel from '@/components/ControlPanel.vue'
 import Thumbnail from '@/components/Thumbnail.vue'
 import VueMasonry from 'vue-masonry-css'
@@ -50,7 +57,7 @@ export default {
   name: 'Gallery',
     components: {
       Hero,
-      Map,
+     // Map,
       ControlPanel,
       thumbnail: Thumbnail,
    //   imagesizes: Imagesizes
@@ -70,7 +77,7 @@ export default {
       next_cursor: null,  
       item: {
         index: '1',
-        public_id: 'blm/IMG_0534_eayqbh',
+        public_id: 'drawings/2018-12-03_16-53-00-0600_urkrgd.jpg',
         title: 'title', 
         category: 'cat',
         lat: '',
@@ -113,11 +120,27 @@ export default {
     changeImageId: function(event) {
        console.log("Gallery: changeImageId: " + event);
 
-      if (event != undefined) {
+     // if (event != undefined) {
+    //    this.item.public_id = event;
+     // }
 
-        this.item.public_id = event;
-        
+      this.imageList2.filter(function (item) {
+
+        //console.log("Gallery: filter: " + item.public_id);
+
+      if (typeof item.public_id != "undefined") {
+
+       console.log("Gallery: filter: " + item.public_id);
+
+          if (item.public_id == event) {
+            item.selected = true;  
+          } 
+          else {
+            item.selected = false;
+          }
       }
+      })
+
     },
 
     controlPanelClick: function(event) {
@@ -130,8 +153,8 @@ export default {
 
    //   let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/resources/image`;
 
-    let env = "local";
-    //let env = "remote";
+   // let env = "local";
+    let env = "remote";
     var url = "";
 
    if (env=="local") {
@@ -200,7 +223,6 @@ export default {
 
             item.filename = 'filename';
             item.thumbnail = '';
-
            }
           })
         // sort 
@@ -245,7 +267,7 @@ export default {
 
       var image_array = this.imageList;
 
-      image_array.filter(function (item) {
+      var filtered_array =  image_array.map(function (item) {
 
       if (typeof item.public_id != "undefined") {
           if (item.public_id == thisDoc.item.public_id) {
@@ -254,10 +276,11 @@ export default {
           else {
             item.selected = false;
           }
+
+          return item;
       }
       })
-      return image_array;
-
+      return filtered_array;
     },
 
   pageImage: function() {
@@ -283,12 +306,20 @@ export default {
       }
       else {
         return [{
+/*
           artist:"",
           address:"200 block of State Street",
           title:"Black Lives Matter",
           public_id:"blm/IMG_0534_eayqbh",
           url:"http://res.cloudinary.com/spiess-co/image/upload/v1592068307/blm/IMG_0534_eayqbh.jpg"
-        }]
+  */
+          artist:"",
+          address:"200 block of State Street",
+          title:"Untitled drawing",
+          public_id:"drawings/2018-12-03_16-53-00-0600_urkrgd.jpg",
+          url:"http://res.cloudinary.com/spiess-co/image/upload/v1592068307/blm/IMG_0534_eayqbh.jpg"
+
+       }]
       }
       
       // return image_array;
@@ -299,6 +330,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
+
+el-row.header p {
+
+  margin-bottom: 12px !important;
+
+}
 
   .transition-box {
   }

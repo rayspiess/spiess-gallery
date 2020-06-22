@@ -9,13 +9,15 @@
   background-color="rgb(237, 237, 237)"
   text-color="#333333"
   active-text-color="rgb(39, 39, 39)">
-  <el-menu-item index="all">all</el-menu-item>
+
+  <!--  <el-menu-item index="all">all</el-menu-item> -->
   <el-menu-item index="painting">paintings</el-menu-item>
   <el-menu-item index="watercolor">watercolor</el-menu-item>
   <el-menu-item index="drawing">drawings</el-menu-item>
   <el-menu-item index="portrait">portraits</el-menu-item>
+  <!--
   <el-menu-item index="sizeoptions">  <i class="el-icon-menu" :style="iconstyle"></i></el-menu-item>
-
+  -->
 <!--
 <i class="el-icon-menu"></i>
   <el-menu-item index="sculpture">sculpture</el-menu-item>

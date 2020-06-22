@@ -20,7 +20,7 @@
     >
       <l-tile-layer :url="url"></l-tile-layer>
 
-   <div v-for="image in imagelist" v-bind:key="image.asset_id">
+   <div v-for="image in MapImagelist" v-bind:key="image.asset_id">
      <l-marker :lat-lng="image.latlng" >
 
 <l-icon
@@ -150,12 +150,14 @@ export default {
     }
   },
   computed: { 
-    imagelist: function() {
+    MapImagelist: function() {
       //let thisDoc = this;
 
       var image_array = this.images;
 
-      image_array.filter(function (item) {
+      var filtered_array  =  image_array.map(function (item) {
+
+        item.foo = "foo"
 
           if (typeof item.lat != "undefined") {
 
@@ -170,8 +172,10 @@ export default {
           else {
             item.class = '';
           }
+
+          return item;
       })
-      return image_array;
+      return filtered_array;
     }
   }
 }
