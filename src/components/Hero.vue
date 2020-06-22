@@ -7,7 +7,7 @@
     <transition name="el-fade-in-linear">
     <div v-show="show" class="transition-show">
 
-    <cld-image :publicId="public_id" class="hero-image" >
+    <cld-image :publicId="public_id" class="hero-image" alt="Summer: Ink on paper" >
       <cld-transformation flags="force_strip" width="420" crop="scale" />
     </cld-image>
 

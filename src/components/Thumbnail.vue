@@ -8,7 +8,7 @@
         @click.native = "open" 
         slot="reference">
           <!-- <img :src="item.url" :alt="item.category" class="thumbnail"><br/> -->
-          <cld-image :publicId="item.public_id" >
+          <cld-image :publicId="item.public_id" :alt = "item.title" >
           <cld-transformation width="485" crop="scale" />
           </cld-image>
         <strong>
@@ -33,7 +33,7 @@
    -->
       <div v-viewer="options" class="images clearfix">
         <!--  <img v-for="src in images" :src="src" :key="src"> -->
-          <cld-image :publicId="item.public_id" >
+          <cld-image :publicId="item.public_id" :alt = "item.title" >
           </cld-image>
     </div>
 
